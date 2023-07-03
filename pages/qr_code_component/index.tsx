@@ -13,7 +13,7 @@ const QRCode = () => {
     }
     return(
         <div style={shadow} className={`flex flex-col items-center text-center
-            bg-[white] rounded-3xl p-4 w-[20%] min-w-[325px] min-h-[475px] text-lg ${outfit.className}`}>
+            bg-[white] rounded-3xl p-4 w-[20%] min-w-[325px] min-h-[500px] text-lg ${outfit.className}`}>
             <Image src={QRCodeImg} alt="QR Code Image" width={500} height={500} className="rounded-xl"/>
                 <h1 className=" text-[22px] leading-7 font-bold text-qr_code_title mx-2 mt-6">
                     Improve your front-end skills by building projects
