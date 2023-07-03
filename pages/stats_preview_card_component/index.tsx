@@ -37,7 +37,7 @@ const StatsSection = (props: {heading: string, subheading:string}) => {
 }
 function Stats(){
   return (
-    <section className='flex gap-x-10'>
+    <section className='flex gap-x-14'>
       <StatsSection heading='COMPANIES' subheading='10k+'></StatsSection>
       <StatsSection heading='TEMPLATES' subheading='314'></StatsSection>
       <StatsSection heading='QUERIES' subheading='12M+'></StatsSection>
@@ -50,15 +50,15 @@ export default function MyComponent(){
         <div className={`flex flex-col justify-center items-center h-[100vh] bg-[#090b1a] text-[white] ${inter.className}`}>
           <div className='flex w-[1100px] h-[450px] bg-[#1b1938] rounded-lg'>
             <section className='w-[50%] p-[4.5rem]'>
-              <h1 className='text-4xl font-bold mb-7 w-[400px]'>Get <span className="text-[#aa5cdb]">insights</span> that help your business grow.</h1>
-              <p className={`w-[350px] text-[15px] opacity-75 mb-16`}>
+              <h1 className='text-4xl font-bold leading-tight mb-7 w-[400px]'>Get <span className="text-[#aa5cdb]">insights</span> that help your business grow.</h1>
+              <p className={`w-[350px] text-[15px] leading-relaxed opacity-75 mb-20`}>
                 Discover the benefit of data analytics and make better decisions regarding revenue, customer experience, and overall efficiency. 
               </p>
               <Stats/>
             </section>
             <section className='bg-[#aa5cdb] w-[50%] rounded-r-lg'>
               {/* <div className='absolute w-[100%] h-[100%] bg-[#aa5cdb] z-10 opacity-50 bg-blend-screen'></div> */}
-              <Image className="mix-blend-multiply rounded-r-lg" src={HeaderImg} alt='Header Image' width={550} height={300}/>
+              <Image className="mix-blend-multiply opacity-75 rounded-r-lg" src={HeaderImg} alt='Header Image' width={550} height={300}/>
             </section>
           </div>
         </div>
