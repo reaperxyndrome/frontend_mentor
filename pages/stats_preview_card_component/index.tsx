@@ -49,7 +49,7 @@ export default function MyComponent(){
     return(
         <div className={`flex flex-col justify-center items-center h-[100vh] bg-[#090b1a] text-[white] ${inter.className}`}>
           <div className='flex w-[1100px] h-[450px] bg-[#1b1938] rounded-lg'>
-            <section className='w-[50%] p-20'>
+            <section className='w-[50%] p-[4.5rem]'>
               <h1 className='text-4xl font-bold mb-7 w-[400px]'>Get <span className="text-[#aa5cdb]">insights</span> that help your business grow.</h1>
               <p className={`w-[350px] text-[15px] opacity-75 mb-16`}>
                 Discover the benefit of data analytics and make better decisions regarding revenue, customer experience, and overall efficiency. 
