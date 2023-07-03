@@ -37,7 +37,7 @@ const StatsSection = (props: {heading: string, subheading:string}) => {
 }
 function Stats(){
   return (
-    <section className='flex gap-x-16'>
+    <section className='flex gap-x-[4.5rem]'>
       <StatsSection heading='COMPANIES' subheading='10k+'></StatsSection>
       <StatsSection heading='TEMPLATES' subheading='314'></StatsSection>
       <StatsSection heading='QUERIES' subheading='12M+'></StatsSection>
