@@ -52,7 +52,7 @@ export default function MyComponent(){
             <section className='w-[100%] p-[4.5rem] pb-[3.75rem]'>
               <h1 className='text-4xl font-bold leading-tight mb-6 w-[400px]'>Get <span className="text-[#aa5cdb]">insights</span> that help your business grow.</h1>
               <p className={`w-[350px] text-[15px] leading-relaxed opacity-75 mb-[4.5rem]`}>
-                Discover the benefit of data analytics and make better decisions regarding revenue, customer experience, and overall efficiency. 
+                Discover the benefits of data analytics and make better decisions regarding revenue, customer experience, and overall efficiency. 
               </p>
               <Stats/>
             </section>
