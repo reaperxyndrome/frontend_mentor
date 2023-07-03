@@ -30,7 +30,7 @@ const StatsSection = (props: {heading: string, subheading:string}) => {
   return(
     <div>
       <h2 className={`font-bold text-2xl mb-1`}>{props.subheading}</h2>
-      <p className='text-xs opacity-60'>{props.heading}</p>
+      <p className='text-sm opacity-60'>{props.heading}</p>
     </div>
   )
   
