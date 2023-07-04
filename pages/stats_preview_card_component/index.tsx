@@ -37,7 +37,7 @@ const StatsSection = (props: {heading: string, subheading:string}) => {
 }
 function Stats(){
   return (
-    <section className='flex gap-x-[4.5rem]'>
+    <section className='flex max-xl:flex-col max-xl:justify-center max-xl:items-center gap-x-[4.5rem] gap-y-8'>
       <StatsSection heading='COMPANIES' subheading='10k+'></StatsSection>
       <StatsSection heading='TEMPLATES' subheading='314'></StatsSection>
       <StatsSection heading='QUERIES' subheading='12M+'></StatsSection>
@@ -47,18 +47,17 @@ function Stats(){
 
 export default function MyComponent(){
     return(
-        <div className={`flex flex-col justify-center items-center h-[100vh] bg-[#090b1a] text-[white] ${inter.className}`}>
-          <div className='flex w-[1110px] h-[446px] bg-[#1b1938] rounded-lg'>
-            <section className='w-[100%] p-[4.5rem] pb-[3.75rem]'>
-              <h1 className='text-4xl font-bold leading-tight mb-6 w-[400px]'>Get <span className="text-[#aa5cdb]">insights</span> that help your business grow.</h1>
-              <p className={`w-[350px] text-[15px] leading-relaxed opacity-75 mb-[4.5rem]`}>
+        <div className={`flex flex-col justify-center items-center h-[100vh] max-xl:h-full bg-[#090b1a] text-[white] ${inter.className}`}>
+          <div className='flex max-xl:flex-col w-[77%] max-xl:max-w-[327px] xl:max-w-[1110px] xl:max-h-[446px] max-xl:my-20 bg-[#1b1938] rounded-xl'>
+            <section className='max-xl:flex max-xl: flex-col max-xl:items-center max-xl:justify-center max-xl:order-2 max-xl:text-center w-[100%] p-[4.5rem] pb-[3.75rem]'>
+              <h1 className='xl:text-4xl xl:leading-tight max-xl:text-[1.75rem] font-bold leading-tight mb-6 max-w-[400px] max-xl:w-[270px] xl:min-w-[400px]'>Get <span className="text-[#aa5cdb]">insights</span> that help your business grow.</h1>
+              <p className={`w-[350px] max-xl:w-[270px] text-[15px] leading-relaxed opacity-75 mb-[4.5rem]`}>
                 Discover the benefits of data analytics and make better decisions regarding revenue, customer experience, and overall efficiency. 
               </p>
               <Stats/>
             </section>
-            <section className='bg-[#aa5cdb] min-w-[540px] min-h-[446px] rounded-r-lg'>
-              {/* <div className='absolute w-[100%] h-[100%] bg-[#aa5cdb] z-10 opacity-50 bg-blend-screen'></div> */}
-              <Image className="mix-blend-multiply opacity-75 rounded-r-lg" src={HeaderImg} alt='Header Image' width={540} height={446}/>
+            <section className='max-xl:order-1 bg-[#aa5cdb] max-xl:max-w-[327px] xl:min-w-[540px] max-h-[446px] max-xl:rounded-t-xl xl:rounded-r-xl'>
+              <Image className="max-xl:max-w-[327px] max-xl:max-h-[240px] mix-blend-multiply opacity-75 xl:rounded-r-xl" src={HeaderImg} alt='Header Image' width={540} height={446}/>
             </section>
           </div>
         </div>
