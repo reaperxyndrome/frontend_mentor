@@ -62,16 +62,16 @@ function ResultSection(): JSX.Element{
             color: ${colors.neutral.light_lavender};
         }
       `}</style>
-        <section className="flex flex-col justify-center items-center text-center w-[23rem] h-[32rem] px-[54px] pb-[46px] pt-[38px] rounded-[2rem]">
-            <h1 className="text-2xl font-bold mb-[35px]">Your Result</h1>
-            <div className="flex flex-col justify-center items-center w-[12.5rem] h-[12.5rem] rounded-full mb-7">
+        <section className="flex flex-col justify-center items-center text-center w-[23rem] max-md:w-[375px] md:max-h-[32rem] max-md:h-[] px-[54px] max-md:px-[58px] pb-[46px] max-md:pb-[42px] pt-[38px] max-md:pt-6 md:rounded-[2rem] rounded-b-[2rem]">
+            <h1 className="text-2xl max-md:text-lg max-md:leading-6 font-bold mb-[35px] max-md:mb-6">Your Result</h1>
+            <div className="flex flex-col justify-center items-center w-[12.5rem] h-[12.5rem] max-md:w-[140px] max-md:h-[140px] rounded-full mb-7 max-md:mb-6">
                 <h2>
-                    <span className="text-7xl">76</span><br></br>
-                    <span className="text-lg">of 100</span>
+                    <span className="text-7xl max-md:text-[3.5rem]">76</span><br></br>
+                    <span className="text-lg max-md:text-base">of 100</span>
                 </h2>
             </div>
-            <h2 className=" text-[2rem] mb-[14px]">Great</h2>
-            <p className="w-64 font-medium text-lg leading-6">You scored higher than 65% of the people who have taken these tests.</p>
+            <h2 className=" text-[2rem] max-md:text-2xl mb-[14px] max-md:mb-2">Great</h2>
+            <p className="w-64 font-medium text-lg max-md:text-base leading-6 max-md:leading-5">You scored higher than 65% of the people who have taken these tests.</p>
         </section>
         </>
     )
@@ -100,7 +100,7 @@ function SkillSection({color, bg_color, skill_name, score, icon, alt}: SkillSect
             color: ${colors.neutral.dark_gray_blue_t};
         }
       `}</style>
-        <div className="skill-section flex justify-between items-center p-4 w-72 h-14 rounded-xl bg-opacity-5">
+        <div className="skill-section flex justify-between items-center p-4 w-full h-14 rounded-xl bg-opacity-5">
             <div className="flex items-center w-[6.25rem]">
                 <Image className=" mr-3" src={icon} alt={alt} width={50} height={50}/>
                 <h3 className="font-bold w-16 mr-20">{skill_name}</h3>
@@ -125,9 +125,9 @@ function SummarySection(): JSX.Element{
             background: ${colors.gradients.background};
         }
       `}</style>
-        <section className="pt-[38px] px-10">
-            <h1 className="mb-8 text-2xl font-extrabold">Summary</h1>
-            <div className="flex flex-col gap-y-4 mb-10">
+        <section className="pt-[38px] max-md:pt-6 px-10 max-md:px-[30px] max-md:pb-[30px]">
+            <h1 className="mb-8 max-md:mb-6 text-2xl max-md:text-lg font-extrabold">Summary</h1>
+            <div className="flex flex-col gap-y-4 mb-10 max-md:mb-6 w-72 max-md:w-[315px]">
                 <SkillSection color={`${colors.primary.light_red}`} bg_color={`${colors.primary.light_red_t}`} skill_name="Reaction" score="80" icon={IconReaction} alt="Reaction skill score"></SkillSection>
                 <SkillSection color={`${colors.primary.orangey_yellow}`} bg_color={`${colors.primary.orangey_yellow_t}`} skill_name="Memory" score="92" icon={IconMemory} alt="hello there"></SkillSection>
                 <SkillSection color={`${colors.primary.green_teal}`} bg_color={`${colors.primary.green_teal_t}`} skill_name="Verbal" score="61" icon={IconVerbal} alt="hello there"></SkillSection>
@@ -142,8 +142,8 @@ function SummarySection(): JSX.Element{
 
 export default function ResultsSummaryPage(): JSX.Element{
     return(
-        <div style={{background: `${colors.neutral.pale_blue}`}} className="h-[100vh] flex items-center justify-center">
-            <div className={`${hanken_grotesk.className} flex bg-[white] rounded-[2rem]`}>
+        <div style={{background: `${colors.neutral.pale_blue}`}} className="h-[100vh] max-md:h-full flex items-center justify-center">
+            <div className={`${hanken_grotesk.className} flex max-md:flex-col bg-[white] rounded-[2rem]`}>
                 <ResultSection/>
                 <SummarySection/>
             </div>
