@@ -5,14 +5,15 @@ import IconMemory from "./icon-memory.svg"
 import IconReaction from "./icon-reaction.svg"
 import IconVerbal from "./icon-verbal.svg"
 import IconVisual from "./icon-visual.svg"
-import { twMerge } from "tailwind-merge"
+// import { twMerge } from "tailwind-merge"
+// import { JsonObjectExpression } from "typescript"
 
 const hanken_grotesk: NextFont = Hanken_Grotesk({
     subsets: ['latin'],
     weight: ['500', '700', '800'],
 })
 
-const colors: Record<string, any> = {
+const colors: Record<string, Record<string, string>> = {
     primary: {
         light_red: 'hsl(0, 100%, 67%)',
         light_red_t: 'hsla(0, 100%, 67%, .05)',
@@ -85,7 +86,7 @@ interface SkillSectionProps {
     alt: string;
 }
 
-function SkillSection({color, bg_color, skill_name, score, icon, alt}: SkillSectionProps) {
+function Skill({color, bg_color, skill_name, score, icon, alt}: SkillSectionProps) {
     return(
         <>
         <style jsx>{`
@@ -111,6 +112,17 @@ function SkillSection({color, bg_color, skill_name, score, icon, alt}: SkillSect
     )
 }
 
+function SkillSection(){
+    return(
+        <div className="flex flex-col gap-y-4 mb-10 max-md:mb-6 w-72 max-md:w-[315px]">
+            <Skill color={`${colors.primary.light_red}`} bg_color={`${colors.primary.light_red_t}`} skill_name="Reaction" score="80" icon={IconReaction} alt="Reaction skill score"></Skill>
+            <Skill color={`${colors.primary.orangey_yellow}`} bg_color={`${colors.primary.orangey_yellow_t}`} skill_name="Memory" score="92" icon={IconMemory} alt="hello there"></Skill>
+            <Skill color={`${colors.primary.green_teal}`} bg_color={`${colors.primary.green_teal_t}`} skill_name="Verbal" score="61" icon={IconVerbal} alt="hello there"></Skill>
+            <Skill color={`${colors.primary.cobalt_blue}`} bg_color={`${colors.primary.cobalt_blue_t}`} skill_name="Visual" score="72" icon={IconVisual} alt="hello there"></Skill>    
+        </div>
+    )
+}
+
 function SummarySection(): JSX.Element{
     return(
         <>
@@ -127,13 +139,7 @@ function SummarySection(): JSX.Element{
       `}</style>
         <section className="pt-[38px] max-md:pt-6 px-10 max-md:px-[30px] max-md:pb-[30px]">
             <h1 className="mb-8 max-md:mb-6 text-2xl max-md:text-lg font-extrabold">Summary</h1>
-            <div className="flex flex-col gap-y-4 mb-10 max-md:mb-6 w-72 max-md:w-[315px]">
-                <SkillSection color={`${colors.primary.light_red}`} bg_color={`${colors.primary.light_red_t}`} skill_name="Reaction" score="80" icon={IconReaction} alt="Reaction skill score"></SkillSection>
-                <SkillSection color={`${colors.primary.orangey_yellow}`} bg_color={`${colors.primary.orangey_yellow_t}`} skill_name="Memory" score="92" icon={IconMemory} alt="hello there"></SkillSection>
-                <SkillSection color={`${colors.primary.green_teal}`} bg_color={`${colors.primary.green_teal_t}`} skill_name="Verbal" score="61" icon={IconVerbal} alt="hello there"></SkillSection>
-                <SkillSection color={`${colors.primary.cobalt_blue}`} bg_color={`${colors.primary.cobalt_blue_t}`} skill_name="Visual" score="72" icon={IconVisual} alt="hello there"></SkillSection>    
-            </div>
-            
+            <SkillSection/>
             <button className="text-[white] text-lg w-full h-14 rounded-full">Continue</button>
         </section>
         </>
