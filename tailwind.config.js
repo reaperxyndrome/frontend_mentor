@@ -57,6 +57,20 @@ module.exports = {
         black: "#030303",
         medium_brown: "#7A746E",
         light_cream: "#FFF7F0",
+      },
+      myteam_multi_page_website:{
+        primary:{
+          midnight_green: "#014E56",
+          light_coral: "#F67E7E",
+          white:""
+        },
+        secondary:{
+          rapture_blue: "#79C8C7",
+          police_blue: "#2C6269",
+          deep_jungle_green: "#004047",
+          sacramento_state_green: "#012F34",
+          dark_green: "#002529"
+        }
       }
     },
     extend: {},
