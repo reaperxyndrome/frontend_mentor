@@ -66,6 +66,7 @@ module.exports = {
         },
         secondary:{
           rapture_blue: "#79C8C7",
+          teal: "#C4FFFE",
           police_blue: "#2C6269",
           deep_jungle_green: "#004047",
           sacramento_state_green: "#012F34",
