@@ -5,6 +5,14 @@ import { Livvic } from "next/font/google"
 import { twMerge } from "tailwind-merge"
 import BGPatternHome1 from "./starter-code/assets/bg-pattern-home-1.svg"
 import BGPatternHome2 from "./starter-code/assets/bg-pattern-home-2.svg"
+import BGPatternHome3 from "./starter-code/assets/bg-pattern-home-3.svg"
+import IconPerson from "./starter-code/assets/icon-person.svg"
+import IconCog from "./starter-code/assets/icon-cog.svg"
+import IconChart from "./starter-code/assets/icon-chart.svg"
+import AvatarKady from "./starter-code/assets/avatar-kady.jpg"
+import AvatarAiysha from "./starter-code/assets/avatar-aiysha.jpg"
+import AvatarArthur from "./starter-code/assets/avatar-arthur.jpg"
+import { StaticImageData } from "next/image"
 
 const livvic= Livvic({
     subsets: ['latin'],
@@ -67,77 +75,114 @@ export default function HomePage(){
         )
     }
     const Section2 = () => {
-        return(
-            <section>
-                <h1>
-                    Build & manage distributed teams like no one else.
-                </h1>
-                <div>
-                    <h2>
-                        Experienced Individuals
-                    </h2>
-                    <p>
-                        Our network is made up of highly experienced professionals who are 
-                        passionate about what they do.
-                    </p>
-                    <h2>
-                        Easy to Implement
-                    </h2>
-                    <p>Our processes have been refined over years of implementation meaning 
-                    our teams always deliver.
-                    </p>
-                    
-                    <h1>Enhanced Productivity</h1>
-                    <p>Our customized platform with in-built analytics helps you manage your 
-                    distributed teams.
-                    </p>
+        interface FeatureProps{
+            icon: StaticImageData | string;
+            icon_name: string;
+            title:string;
+            description:string;
+        }
+        const Feature : React.FC<FeatureProps> = ({icon, icon_name, title, description}) => {
+            return(
+                <div className="flex gap-x-6 items-center">
+                    <Image className="grow-0" src={icon} alt={icon_name}></Image>
+                    <div>
+                        <h2 className={`${typography.body_1} text-myteam_multi_page_website-primary-light_coral mb-4`}>{title}</h2>
+                        <p className={`${typography.body_2} text-[white]`}>{description}</p>
+                    </div>
                 </div>
+            )
+        }
+
+        const featureList = [
+            {
+                icon: IconPerson,
+                icon_name: "Person Icon",
+                title: "Experienced Individuals",
+                description: "Our network is made up of highly experienced professionals who are passionate about what they do."
+            },
+            {
+                icon: IconCog,
+                icon_name: "Cog Icon",
+                title: "Easy to Implement",
+                description: "Our processes have been refined over years of implementation meaning our teams always deliver."
+            },
+            {
+                icon: IconChart,
+                icon_name: "Chart Icon",
+                title: "Enhanced Productivity",
+                description: "Our customized platform with in-built analytics helps you manage your distributed teams."
+            }
+        ]
+        return(
+            <section className="relative flex justify-between px-[165px] py-[140px] bg-myteam_multi_page_website-secondary-sacramento_state_green">
+                <div>
+                    <div className="w-[50px] h-1 bg-myteam_multi_page_website-primary-light_coral mb-14"></div>
+                    <h1 className={`${typography.h2} w-[445px] text-[white]`}>
+                        Build & manage distributed teams like no one else.
+                    </h1>
+                </div>
+                <div className="flex flex-col gap-y-8 mt-12 w-[540px]">
+                    {featureList.map((feature, index) => (
+                        <Feature key={`feature ${index}`} {...feature}></Feature>
+                    ))}
+                </div>
+                <Image className="absolute bottom-0 right-[-100px]" src={BGPatternHome3} alt="Pattern Home 3"></Image>
                     
             </section>
         )
     }
 
     const Section3 = () => {
-        const SuccessStory = () => {
+        interface SuccessProps{
+            name: string;
+            position: string;
+            avatar: StaticImageData | string;
+            testimony: string;
+        }
+        const SuccessStory:React.FC<SuccessProps> = ({name, position, avatar, testimony}) => {
             return(
-                <>
-                </>
+                <div className="flex flex-col items-center">
+                    <p className={`${typography.body_2} w-[350px] mb-6`}>{testimony}</p>
+                    <h2 className=" text-myteam_multi_page_website-secondary-rapture_blue">{name}</h2>
+                    <h3 className="mb-8">{position}</h3>
+                    <Image className=" rounded-full border-2 border-myteam_multi_page_website-secondary-teal" src={avatar} alt={`avatar ${name}`} width={62}></Image>
+                </div>
             )
         }
-        return(
-            <>
-                
-                <h1>Delivering real results for top companies. <span>Some of our success stories.</span></h1>
-                
-                <p>
-                    “The team perfectly fit the specialized skill set required. They focused 
-                    on the most essential features helping us launch the platform eight months 
-                    faster than planned.”
-                </p>
-                <h3>Kady Baker</h3>
-                <h2>
-                    Product Manager at Bookmark
-                </h2>
 
+        const successList = [
+            {
+                name: "Kady Baker",
+                position: "Product Manager at Bookmark",
+                avatar: AvatarKady,
+                testimony: "“The team perfectly fit the specialized skill set required. They focused on the most essential features helping us launch the platform eight months faster than planned.”"
+            },
+            {
+                name: "Aiysha Reese",
+                position: "Founder of Manage",
+                avatar: AvatarAiysha,
+                testimony: "“We needed to automate our entire onboarding process. The team came in and built out the whole journey. Since going live, user retention has gone through the roof!”"
+            },
+            {
+                name: "Arthur Clarke",
+                position: "Co-founder of MyPhysio",
+                avatar: AvatarArthur,
+                testimony: "“Amazing. Our team helped us build an app that delivered a new experience for hiring a physio. The launch was an instant success with 100k downloads in the first month.”"
+            }
+        ]
+        return(
+            <section className="flex flex-col py-[140px] px-[165px] gap-y-14 bg-myteam_multi_page_website-secondary-deep_jungle_green items-center text-center text-[white]">
+                <h1 className={`${typography.h2} w-[932px] `}>Delivering real results for top companies. Some of our <span className=" text-myteam_multi_page_website-secondary-rapture_blue">success stories.</span></h1>
+                <div className="flex gap-x-[30px]">
+                    {successList.map((success, index) => ((
+                        <SuccessStory key={`success ${index}`} {...success}></SuccessStory>
+                    )))}
+                </div>
                 
-                
-                “We needed to automate our entire onboarding process. The team came in and 
-                built out the whole journey. Since going live, user retention has gone 
-                through the roof!”
-                Aiysha Reese
-                Founder of Manage
-                
-                “Amazing. Our team helped us build an app that delivered a new experience for 
-                hiring a physio. The launch was an instant success with 100k downloads in the 
-                first month.”
-                Arthur Clarke
-                Co-founder of MyPhysio
-                    
-                    
-            </>
+            </section>
         )
     }
-    return(<>
+    return(<div className={`${livvic.className}`}>
         <Section1></Section1>
         <Section2></Section2>
         <Section3></Section3>
@@ -158,5 +203,5 @@ export default function HomePage(){
         California 92714
         Call Us : 949-833-7432
       
-        Copyright 2020. All Rights Reserved</>)
+        Copyright 2020. All Rights Reserved</div>)
 }
