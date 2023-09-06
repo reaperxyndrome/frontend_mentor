@@ -1,106 +1,24 @@
 import Image from "next/image"
-import Link from "next/link"
-import Logo from "./starter-code/assets/logo.svg"
 import { Livvic } from "next/font/google"
-import { twMerge } from "tailwind-merge"
 import BGPatternHome1 from "./starter-code/assets/bg-pattern-home-1.svg"
 import BGPatternHome2 from "./starter-code/assets/bg-pattern-home-2.svg"
 import BGPatternHome3 from "./starter-code/assets/bg-pattern-home-3.svg"
 import BGPatternHome4 from "./starter-code/assets/bg-pattern-home-4-about-3.svg"
 import BGPatternHome5 from "./starter-code/assets/bg-pattern-home-5.svg"
-import BGPatternHome6 from "./starter-code/assets/bg-pattern-home-6-about-5.svg"
 import IconPerson from "./starter-code/assets/icon-person.svg"
 import IconCog from "./starter-code/assets/icon-cog.svg"
 import IconChart from "./starter-code/assets/icon-chart.svg"
 import IconQuotes from "./starter-code/assets/icon-quotes.svg"
-import IconFacebook from "./starter-code/assets/icon-facebook.svg"
-import IconTwitter from "./starter-code/assets/icon-twitter.svg"
-import IconPinterest from "./starter-code/assets/icon-pinterest.svg"
 import AvatarKady from "./starter-code/assets/avatar-kady.jpg"
 import AvatarAiysha from "./starter-code/assets/avatar-aiysha.jpg"
 import AvatarArthur from "./starter-code/assets/avatar-arthur.jpg"
 import { StaticImageData } from "next/image"
+import {livvic, typography, Navbar, Footer } from "./reusable_component"
 
-const livvic= Livvic({
-    subsets: ['latin'],
-    weight: ['600', '700']
-})
-
-const typography = {
-    h1_L: "font-bold text-[100px] leading-[100px]",
-    h1_S: "font-bold text-[64px] leading-[56px]",
-    h2:"font-bold text-[48px] leading-[48px]",
-    h3: "font-bold text-[18px] leading-[28px]",
-    body_1:"font-semibold text-[18px] leading-[28px]",
-    body_2:"font-semibold text-[15px] leading-[25px]"
-}
-interface ExtendableProp{
-    className?: string;
-}
-interface ButtonProp extends ExtendableProp {
-    title?:string;
-}
-const Button : React.FC<ButtonProp> = ({className, title}) => {
-    return(
-        <div className={twMerge(`flex items-center justify-center text-[white] rounded-full w-[153px] h-[48px] px-[30px] py-[10px] border-2`, className)}>
-            <p>{title}</p>
-        </div>
-    )
-}
-const Navbar: React.FC<ExtendableProp> = ({className}) => {
-    return(
-        <nav className={twMerge(`${typography.body_1} flex gap-x-3 justify-between`, className)}>
-            <div className="flex items-center ">
-                <Image className="mr-20" src={Logo} alt="my team"></Image>
-                <Link className="mr-10" href={""}>home</Link>
-                <Link href={""}>about</Link>
-            </div>
-            <Button title="contact us"></Button>
-        </nav>
-    )
-}
-
-const Footer = () => {
-    return(
-        <section>
-            <div className="relative flex justify-between py-[76px] px-[260px] bg-myteam_multi_page_website-primary-light_coral">
-                <h2 className={`${typography.h2}
-                text-myteam_multi_page_website-secondary-sacramento_state_green`}>
-                    Ready to get started?
-                </h2>
-                <Button className=" text-myteam_multi_page_website-secondary-sacramento_state_green" title="contact us"></Button>
-                <Image className="absolute left-0 bottom-0" src={BGPatternHome6} alt="Pattern Home 6"></Image>
-            </div>
-            <div className="flex justify-around  bg-myteam_multi_page_website-secondary-dark_green text-[white] px-[165px] py-12">
-                <div className="flex flex-col gap-y-6">
-                    <Image src={Logo} alt="myteam logo"></Image>
-                    <div className={`${typography.body_1} flex gap-x-10`}>
-                        <p>home</p>
-                        <p>about</p>
-                    </div>
-                </div>
-                <div className={`${typography.body_2} opacity-60`}>
-                987 Hillcrest Lane<br></br>
-                Irvine, CA<br></br>
-                California 92714<br></br>
-                Call Us : 949-833-7432
-                </div>
-            
-                <div className={`flex flex-col justify-between ${typography.body_2} opacity-60`}>
-                    <div className="flex gap-x-4 justify-end">
-                        {/* <IconFacebook/> */}
-                        <Image className=" fill-[white]" src={IconFacebook} alt="facebook"></Image>
-                        <Image src={IconPinterest} alt="pinterest"></Image>
-                        <Image src={IconTwitter} alt="twitter"></Image>
-                    </div>
-                    Copyright 2020. All Rights Reserved
-                </div>
-                
-        
-            </div>
-        </section>
-    )
-}
+// const livvic= Livvic({
+//     subsets: ['latin'],
+//     weight: ['600', '700']
+// })
 
 export default function HomePage(){
     
@@ -236,10 +154,10 @@ export default function HomePage(){
     }
     return(
         <div className={`${livvic.className}`}>
-        <Section1></Section1>
-        <Section2></Section2>
-        <Section3></Section3>
-        <Footer></Footer>
+            <Section1></Section1>
+            <Section2></Section2>
+            <Section3></Section3>
+            <Footer></Footer>
       
         </div>
     )
