@@ -13,7 +13,7 @@ import AvatarKady from "./starter-code/assets/avatar-kady.jpg"
 import AvatarAiysha from "./starter-code/assets/avatar-aiysha.jpg"
 import AvatarArthur from "./starter-code/assets/avatar-arthur.jpg"
 import { StaticImageData } from "next/image"
-import {livvic, typography, Navbar, Footer } from "./reusable_component"
+import {livvic, typography, Navbar, Footer, ContactSection } from "./reusable_component"
 
 // const livvic= Livvic({
 //     subsets: ['latin'],
@@ -154,11 +154,11 @@ export default function HomePage(){
     }
     return(
         <div className={`${livvic.className}`}>
-            <Section1></Section1>
-            <Section2></Section2>
-            <Section3></Section3>
-            <Footer></Footer>
-      
+            <Section1/>
+            <Section2/>
+            <Section3/>
+            <ContactSection/>
+            <Footer/>
         </div>
     )
 }

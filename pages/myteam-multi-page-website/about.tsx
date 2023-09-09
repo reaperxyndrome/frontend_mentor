@@ -1,8 +1,11 @@
-import { livvic, typography, Navbar, Footer } from "./reusable_component"
+import { livvic, typography, Navbar, Footer, IconTwitter, IconLinkedIn, ContactSection } from "./reusable_component"
 import { StaticImageData } from "next/image"
 import BGPatternAbout1 from "./starter-code/assets/bg-pattern-about-1-mobile-nav-1.svg"
+import BGPatternAbout2 from "./starter-code/assets/bg-pattern-about-2-contact-1.svg"
+import BGPatternAbout3 from "./starter-code/assets/bg-pattern-home-4-about-3.svg"
 import BGPatternAbout4 from "./starter-code/assets/bg-pattern-about-4.svg"
 import IconCross from "./starter-code/assets/icon-cross.svg"
+import IconClose from "./starter-code/assets/icon-close.svg"
 
 import AvatarNikita from "./starter-code/assets/avatar-nikita.jpg"
 import AvatarCristian from "./starter-code/assets/avatar-christian.jpg"
@@ -18,6 +21,8 @@ import LogoGuardian from "./starter-code/assets/logo-the-guardian.png"
 import LogoTechradar from "./starter-code/assets/logo-tech-radar.png"
 import LogoGadgetsNow from "./starter-code/assets/logo-gadgets-now.png"
 import LogoJakartaPost from "./starter-code/assets//logo-jakarta-post.png"
+import { EventHandler, MouseEventHandler, MutableRefObject, RefObject, useRef, useState } from "react"
+import type { ExtendableProp } from "./reusable_component"
 
 export default function AboutPage(){
     const HeroSection = ()  => {
@@ -41,19 +46,125 @@ export default function AboutPage(){
     }
 
     const DirectorSection = () => {
-        return(
-            <section className="px-[165px] py-[140px] bg-myteam_multi_page_website-secondary-deep_jungle_green">
-                <h2 className={`${typography.h2} text-[white]`}>Meet the directors</h2>
-                <div>
-                    <div className="relative flex flex-col items-center w-[350px] h-[253px] pt-8 pb-14 bg-myteam_multi_page_website-secondary-sacramento_state_green">
-                        <Image className="w-24 mb-4 rounded-full border-2 border-myteam_multi_page_website-secondary-teal" src={AvatarNikita} alt=""></Image>
-                        <p className={`${typography.body_1} text-myteam_multi_page_website-secondary-rapture_blue`}>Nikita Marks</p>
-                        <p className={`${typography.body_2} text-[white]`}>Founder & CEO</p>
-                        <div className="absolute flex items-center justify-center rounded-full bottom-[-28px] w-14 h-14 bg-myteam_multi_page_website-primary-light_coral">
-                            <Image className="" src={IconCross} alt=""></Image>
-                        </div>
+        interface DirectorProps{
+            name: string,
+            position: string,
+            quote: string,
+            avatar: StaticImageData,
+
+        }
+
+        const Director:React.FC<DirectorProps> = ({name, position, quote, avatar}) => {
+            const [isOpen, setOpen] = useState(true);
+            const cardRef : RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+            const clickHandler : MouseEventHandler<HTMLDivElement> = (e) => {
+                const card = cardRef.current
+                const closedBGCard = "bg-myteam_multi_page_website-secondary-sacramento_state_green"
+                const openBGCard = "bg-myteam_multi_page_website-secondary-dark_green"
+                const button = e.currentTarget
+                const closedBGButton = "bg-myteam_multi_page_website-primary-light_coral"
+                const openBGButton = "bg-myteam_multi_page_website-secondary-rapture_blue"
+                const cross = button.children.namedItem("cross")
+                const close = button.children.namedItem("close")
+                const icons = card?.children.namedItem("icons")
+
+                setOpen(isOpen => !isOpen)
+                
+                if(isOpen){
+                    card?.classList.remove(closedBGCard)
+                    card?.classList.add(openBGCard, "pt-[35px]", "pb-[63px]")
+                    card?.children.namedItem("avatar")?.classList.add("hidden")
+                    card?.children.namedItem("position")?.classList.add("hidden")
+                    card?.children.namedItem("quote")?.classList.remove("hidden")
+                    button.classList.remove(closedBGButton)
+                    button.classList.add(openBGButton, `hover:${closedBGButton}`)
+                    cross?.classList.add("hidden")
+                    close?.classList.remove("hidden")
+                    icons?.classList.remove("hidden")
+                    return;
+                }
+                card?.classList.add(closedBGCard)
+                card?.classList.remove(openBGCard, "pt-[35px]", "pb-[63px]")
+                card?.children.namedItem("avatar")?.classList.remove("hidden")
+                card?.children.namedItem("position")?.classList.remove("hidden")
+                card?.children.namedItem("quote")?.classList.add("hidden")
+                button.classList.add(closedBGButton)
+                button.classList.remove(openBGButton, `hover:${closedBGButton}`)
+                cross?.classList.remove("hidden")
+                close?.classList.add("hidden")
+                icons?.classList.add("hidden")
+            }
+
+            return(
+                <div ref={cardRef} className="relative flex flex-col items-center w-[350px] h-[253px] pt-8 pb-14 bg-myteam_multi_page_website-secondary-sacramento_state_green text-center">
+                    <Image id="avatar" className="w-24 mb-4 rounded-full border-2 border-myteam_multi_page_website-secondary-teal" src={avatar} alt=""></Image>
+                    <p className={`${typography.body_1} text-myteam_multi_page_website-secondary-rapture_blue`}>{name}</p>
+                    <p id="position" className={`${typography.body_2} text-[white]`}>{position}</p>
+                    <p id="quote" className={`hidden ${typography.body_2} text-[white] w-[254px] mt-2 mb-6`}>{quote}</p>
+                    <div id="icons" className="flex gap-x-[18px] hidden">
+                        {/* <Image src={IconTwitter} alt="LinkedIn icon"></Image> */}
+                        {/* <Image src={IconLinkedin} alt="Facebook icon"></Image> */}
+                        <IconTwitter></IconTwitter>
+                        <IconLinkedIn></IconLinkedIn>
+                    </div>
+                    <div onClick={clickHandler} className="absolute flex items-center justify-center rounded-full bottom-[-28px] w-14 h-14 bg-myteam_multi_page_website-primary-light_coral cursor-pointer">
+                        <Image id="cross" src={IconCross} alt=""></Image>
+                        <Image id="close" className="hidden" src={IconClose} alt=""></Image>
                     </div>
                 </div>
+            )
+        }
+
+        const directorList = [
+            {
+                name: "Nikita Marks",
+                position: "Founder & CEO",
+                quote: "“It always amazes me how much talent there is in every corner of the globe.”",
+                avatar: AvatarNikita
+            },
+            {
+                name: "Cristian Duncan",
+                position: "Co-founder & COO",
+                quote: "“Distributed teams required unique processes. You need to approach work in a new way.”",
+                avatar: AvatarCristian
+            },
+            {
+                name: "Cruz Hamer",
+                position: "Co-founder & CTO",
+                quote: "“Technology is at the forefront of enabling distributed teams. That's where we come in.”",
+                avatar: AvatarCruz
+            },
+            {
+                name: "Drake Heaton",
+                position: "Business Development Lead",
+                quote: "“Hiring similar people from similar backgrounds is a surefire way to stunt innovation.”",
+                avatar: AvatarDrake
+            },
+            {
+                name: "Griffin Wise",
+                position: "Lead Marketing",
+                quote: "“Unique perspectives shape unique products, which is what you need to survive these days.”",
+                avatar: AvatarGriffin
+            },
+            {
+                name: "Aden Allan",
+                position: "Head of Talent",
+                quote: "“Empowered teams create truly amazing products. Set the north star and let them follow it.”",
+                avatar: AvatarAden
+            }
+        ]
+        
+        return(
+            <section className="relative flex flex-col justify-center items-center px-[165px] py-[140px] bg-myteam_multi_page_website-secondary-deep_jungle_green gap-y-16">
+                <h2 className={`${typography.h2} text-[white]`}>Meet the directors</h2>
+                <div className="flex justify-center flex-wrap gap-x-[30px] gap-y-[76px]">
+                {directorList.map((director, index) => 
+                    <Director key={`director ${index}`} {...director}></Director>
+                )}
+                </div>
+                <Image className="absolute top-0 left-[-100px]" src={BGPatternAbout2} alt=""></Image>
+                <Image className="absolute bottom-0 right-0" src={BGPatternAbout3} alt=""></Image>
+                
             </section>
         )
     }
@@ -75,10 +186,11 @@ export default function AboutPage(){
     }
     return(
         <div className={`${livvic.className}`}>
-            <HeroSection></HeroSection>
-            <DirectorSection></DirectorSection>
-            <ClientSection></ClientSection>
-            <Footer></Footer>
+            <HeroSection/>
+            <DirectorSection/>
+            <ClientSection/>
+            <ContactSection/>
+            <Footer/>
         </div>
     )
 }
