@@ -27,13 +27,14 @@ import type { ExtendableProp } from "./reusable_component"
 export default function AboutPage(){
     const HeroSection = ()  => {
         return(
-            <section className="relative bg-myteam_multi_page_website-primary-midnight_green px-[165px] pt-[73px] pb-[120px] text-[white]">
+            <section className="relative bg-myteam_multi_page_website-primary-midnight_green
+             px-[clamp(40px,11vw,165px)] max-md:px-10 pt-[73px] max-md:pt-[64px] pb-[120px] max-md:pb-[112px] text-[white]">
                 <Navbar className="mb-[120px]"></Navbar>
-                <div className="flex gap-x-[30px]">
-                    <h1 className={`${typography.h1_S} w-[350px]`}>About</h1>
+                <div className="flex max-lg:flex-col max-lg:items-center max-lg:text-center gap-x-[30px]">
+                    <h1 className={`${typography.h1_S} w-[350px] max-lg:mb-6`}>About</h1>
                     <div>
-                        <div className="w-[50px] h-1 bg-myteam_multi_page_website-primary-light_coral mb-10"></div>
-                        <p className={`${typography.body_1} w-[730px]`}> We help companies build dynamic teams made up of top global talent. 
+                        <div className="w-[50px] h-1 bg-myteam_multi_page_website-primary-light_coral mb-10 max-lg:hidden"></div>
+                        <p className={`${typography.body_1} w-[clamp(457px,50vw,730px)]`}> We help companies build dynamic teams made up of top global talent. 
                             Using our network of passionate professionals we drive innovation and deliver incredible outcomes.
                             Talented, diverse teams shape the best products and experiences.
                             We’ll bring those teams to you.
@@ -96,7 +97,7 @@ export default function AboutPage(){
             }
 
             return(
-                <div ref={cardRef} className="relative flex flex-col items-center w-[350px] h-[253px] pt-8 pb-14 bg-myteam_multi_page_website-secondary-sacramento_state_green text-center">
+                <div ref={cardRef} className="relative flex flex-col items-center w-[clamp(280px,30vw,350px)] h-[253px] pt-8 pb-14 bg-myteam_multi_page_website-secondary-sacramento_state_green text-center">
                     <Image id="avatar" className="w-24 mb-4 rounded-full border-2 border-myteam_multi_page_website-secondary-teal" src={avatar} alt=""></Image>
                     <p className={`${typography.body_1} text-myteam_multi_page_website-secondary-rapture_blue`}>{name}</p>
                     <p id="position" className={`${typography.body_2} text-[white]`}>{position}</p>
@@ -155,9 +156,9 @@ export default function AboutPage(){
         ]
         
         return(
-            <section className="relative flex flex-col justify-center items-center px-[165px] py-[140px] bg-myteam_multi_page_website-secondary-deep_jungle_green gap-y-16">
+            <section className="relative flex flex-col justify-center items-center px-[clamp(98px,11vw,165px)] pt-[clamp(100px,11vw,140px)] pb-[clamp(128px,11vw,140px)] bg-myteam_multi_page_website-secondary-deep_jungle_green gap-y-16">
                 <h2 className={`${typography.h2} text-[white]`}>Meet the directors</h2>
-                <div className="flex justify-center flex-wrap gap-x-[30px] gap-y-[76px]">
+                <div className="flex justify-center flex-wrap gap-x-[clamp(11px,1.5vw,30px)] gap-y-[76px]">
                 {directorList.map((director, index) => 
                     <Director key={`director ${index}`} {...director}></Director>
                 )}
@@ -171,16 +172,16 @@ export default function AboutPage(){
 
     const ClientSection = () => {
         return(
-            <section className="relative flex flex-col items-center px-[165px] py-[140px] text-[white] bg-myteam_multi_page_website-secondary-sacramento_state_green gap-y-16">
+            <section className="relative flex flex-col items-center px-[clamp(35px,10vw,165px)] max-md:px-[40px] py-[clamp(100px,12vw,140px)] text-[white] bg-myteam_multi_page_website-secondary-sacramento_state_green gap-y-16 overflow-hidden">
                 <h2 className={`${typography.h2}`}>Some of our clients</h2>
-                <div className="flex items-center gap-x-20">
-                    <Image className="w-[165px] h-7" src={LogoTheVerge} alt=""/>
-                    <Image className="w-[184px] h-[23px]" src={LogoJakartaPost} alt=""></Image>
-                    <Image className="w-[180px] h-7" src={LogoGuardian} alt=""></Image>
-                    <Image className="w-[165px] h-7" src={LogoTechradar} alt=""></Image>
-                    <Image className="w-[98px] h-[45px]" src={LogoGadgetsNow} alt=""></Image>
+                <div className="flex items-center gap-x-[clamp(40px,5vw,80px)]">
+                    <Image className="w-[clamp(103px,15vw,165px)] h-[clamp(17px,2vw,28px)]" src={LogoTheVerge} alt=""/>
+                    <Image className="w-[clamp(114px,15vw,184px)] h-[clamp(14px,2vw,23px)]" src={LogoJakartaPost} alt=""></Image>
+                    <Image className="w-[clamp(112px,15vw,180px)] h-[clamp(17px,2vw,28px)]" src={LogoGuardian} alt=""></Image>
+                    <Image className="w-[clamp(103px,15vw,165px)] h-[clamp(17px,2vw,28px)]" src={LogoTechradar} alt=""></Image>
+                    <Image className="w-[clamp(61px,8vw,98px)] h-[clamp(28px,3vw,45px)]" src={LogoGadgetsNow} alt=""></Image>
                 </div>
-                <Image className="absolute top-0 left-0" src={BGPatternAbout4} alt=""></Image>
+                <Image className="absolute top-[clamp(-100px,calc(-200px+15vw),0px)] max-md:-top-[100px] left-0" src={BGPatternAbout4} alt=""></Image>
             </section>
         )
     }
