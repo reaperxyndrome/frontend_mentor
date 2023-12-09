@@ -1,9 +1,12 @@
 import { twMerge } from "tailwind-merge"
 import Image from "next/image"
 import BGPatternHome6 from "./starter-code/assets/bg-pattern-home-6-about-5.svg"
+import BGPatternMobileNav from "./starter-code/assets/bg-pattern-about-1-mobile-nav-1.svg"
+import IconClose from "./starter-code/assets/icon-close-nav.svg"
 import Logo from "./starter-code/assets/logo.svg"
 import Link from "next/link"
 import { Livvic } from "next/font/google"
+import {useEffect, useState} from "react"
 
 
 const livvic= Livvic({
@@ -12,7 +15,7 @@ const livvic= Livvic({
 })
 
 const typography = {
-    h1_L: "font-bold text-[64px] md:text-[clamp(64px,7vw,100px)] leading-[56px] md:leading-[clamp(56px,7vw,100px)] ",
+    h1_L: "font-bold text-[64px] md:text-[clamp(64px,7vw,100px)] min-[375px]:text-[clamp(40px,10vw,64px)] leading-[56px] md:leading-[clamp(56px,7vw,100px)] min-[375px]:leading-[clamp(40px,10vw,56px)]",
     h1_S: "font-bold text-[64px] leading-[56px]",
     h2:"font-bold text-[clamp(32px,4vw,48px)] leading-[clamp(32px,4vw,48px)]",
     h2_S: "font-bold text-[32px] leading-[48px]",
@@ -37,9 +40,9 @@ const Button : React.FC<ButtonProp> = ({className, title}) => {
     )
 }
 
-const ContactButton1 = () => {
+const ContactButton1:React.FC<ExtendableProp> = ({className}) => {
     return(
-        <Link href="/myteam-multi-page-website/contact">
+        <Link href="/myteam-multi-page-website/contact" className={className}>
             <Button className={`hover:bg-[white]
                 hover:text-myteam_multi_page_website-secondary-dark_green`}
                 title="contact us"/>
@@ -137,23 +140,51 @@ const IconLinkedIn = () => {
     )
 }
 
-
+// TODO: Create sliding burger menu
 const Navbar: React.FC<ExtendableProp> = ({className}) => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen)
+    }
+
+    useEffect(() => {
+        console.log(isMenuOpen)
+    }, [isMenuOpen])
     return(
-        <nav className={twMerge(`${typography.body_1} text-[white] flex gap-x-3 justify-between`, className)}>
-            <div className="flex items-center ">
+        <nav className={twMerge(`${typography.body_1} text-[white] flex gap-x-3 justify-between items-center`, className)}>
+            <div className="flex items-center">
                 <Link href={"/myteam-multi-page-website"}>
                     <Image className="mr-[clamp(40px,5vw,80px)]" src={Logo} alt="my team"/>
                 </Link>
-                <Link className="mr-10 hover:text-myteam_multi_page_website-primary-light_coral" 
+                <div className="max-sm:hidden">
+                    <Link className="mr-10 hover:text-myteam_multi_page_website-primary-light_coral" 
+                        href={"/myteam-multi-page-website"}>home
+                    </Link>
+                    <Link className="hover:text-myteam_multi_page_website-primary-light_coral"
+                        href={"/myteam-multi-page-website/about"}>about
+                    </Link>
+                </div>
+            </div>
+            <div className="sm:hidden w-5 h-[17px] hover:cursor-pointer" onClick={toggleMenu}>
+                <div className="bg-[white] h-[3px] mb-1"></div>
+                <div className="bg-[white] h-[3px] mb-1"></div>
+                <div className="bg-[white] h-[3px]"></div>
+            </div>
+            <div className={`absolute top-0 bottom-0 right-0 left-0 bg-[black] opacity-40 ${isMenuOpen ? 'absolute' : 'hidden'} z-10`}></div>
+            <div className={`flex flex-col absolute top-0 right-0 h-full w-[255px] px-12 pt-14 bg-myteam_multi_page_website-secondary-police_blue transition-transform duration-200 ease-in-out transform ${isMenuOpen? 'translate-x-0' : 'translate-x-full'} z-10 overflow-hidden`}>
+                {/* <div className="bg-[black] h-5 w-5 mb-10 self-end" onClick={toggleMenu}></div> */}
+                <Image className="mb-10 self-end hover:cursor-pointer" color="currentColor" src={IconClose} alt="Icon Close" onClick={toggleMenu}></Image>
+                <Link className="mr-10 hover:text-myteam_multi_page_website-primary-light_coral mb-6" 
                     href={"/myteam-multi-page-website"}>home
                 </Link>
-                <Link className="hover:text-myteam_multi_page_website-primary-light_coral"
-                    href={"/myteam-multi-page-website/about"}>about
+                <Link className="hover:text-myteam_multi_page_website-primary-light_coral mb-9"
+                    href={"/myteam-multi_page_website/about"}>about
                 </Link>
+                <ContactButton1></ContactButton1>
+                <Image className="absolute -right-[100px] bottom-0" src={BGPatternMobileNav} alt="Pattern Mobile Nav"></Image>
             </div>
             {/* <Button title="contact us"></Button> */}
-            <ContactButton1></ContactButton1>
+            <ContactButton1 className="max-sm:hidden"></ContactButton1>
         </nav>
     )
 }
