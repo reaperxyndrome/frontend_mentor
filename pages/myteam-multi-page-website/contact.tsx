@@ -46,7 +46,7 @@ export default function ContactPage(){
                 setIsFilled(event.target.value !== '');
             };
             return (
-                <div className="flex flex-col text-[white] w-[540px]">
+                <div className="flex flex-col text-[white] w-full">
                     <input 
                         className={`border-b pb-4 bg-[white] bg-opacity-0 mb-2 focus:outline-none indent-3.5
                             ${required && !isFilled && isSubmitted?
@@ -73,10 +73,10 @@ export default function ContactPage(){
             setIsSubmitted(true);
         };
         return(
-            <section className="relative flex flex-col gap-y-[120px] bg-myteam_multi_page_website-primary-midnight_green px-[165px] pt-[73px] pb-[120px]">
+            <section className="relative flex flex-col gap-y-[120px] bg-myteam_multi_page_website-primary-midnight_green px-[clamp(40px,11vw,165px)] max-md:px-10 pt-[73px] max-md:pt-16 pb-[120px] max-md:pb-[112px]">
                 <Navbar/>
-                <div className="flex">
-                    <div className="flex flex-col w-[540px]">
+                <div className="flex max-lg:flex-col lg:justify-between max-lg:items-center max-lg:text-center gap-x-10">
+                    <div className="flex flex-col w-[540px] max-lg:mb-16">
                         <h1 className={`${typography.h1_S} text-[white] mb-4 h-[100px]`}>Contact</h1>
                         <h2 className={`${typography.h2_S} text-myteam_multi_page_website-primary-light_coral mb-8`}>Ask us about</h2>
                         <div className="flex flex-col gap-y-2">
@@ -85,7 +85,7 @@ export default function ContactPage(){
                             )}
                         </div>
                     </div>
-                    <form className="flex items-start flex-col gap-y-4" onSubmit={handleSubmit} noValidate>
+                    <form className="flex items-start flex-col gap-y-4 w-[540px]" onSubmit={handleSubmit} noValidate>
                         <Field required label="Name" isSubmitted={isSubmitted}></Field>
                         <Field required label="Email Address" isSubmitted={isSubmitted}></Field>
                         <Field label="Company Name"></Field>
