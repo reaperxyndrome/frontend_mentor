@@ -140,7 +140,8 @@ const IconLinkedIn = () => {
     )
 }
 
-// TODO: Create sliding burger menu
+// TODO: fix the navbar to be on the main page, instead of the child of a section
+// FIXME: fix the burger menu sidebar please
 const Navbar: React.FC<ExtendableProp> = ({className}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const toggleMenu = () => {
@@ -151,27 +152,9 @@ const Navbar: React.FC<ExtendableProp> = ({className}) => {
         console.log(isMenuOpen)
     }, [isMenuOpen])
     return(
-        <nav className={twMerge(`${typography.body_1} text-[white] flex gap-x-3 justify-between items-center`, className)}>
-            <div className="flex items-center">
-                <Link href={"/myteam-multi-page-website"}>
-                    <Image className="mr-[clamp(40px,5vw,80px)]" src={Logo} alt="my team"/>
-                </Link>
-                <div className="max-sm:hidden">
-                    <Link className="mr-10 hover:text-myteam_multi_page_website-primary-light_coral" 
-                        href={"/myteam-multi-page-website"}>home
-                    </Link>
-                    <Link className="hover:text-myteam_multi_page_website-primary-light_coral"
-                        href={"/myteam-multi-page-website/about"}>about
-                    </Link>
-                </div>
-            </div>
-            <div className="sm:hidden w-5 h-[17px] hover:cursor-pointer" onClick={toggleMenu}>
-                <div className="bg-[white] h-[3px] mb-1"></div>
-                <div className="bg-[white] h-[3px] mb-1"></div>
-                <div className="bg-[white] h-[3px]"></div>
-            </div>
-            <div className={`absolute top-0 bottom-0 right-0 left-0 bg-[black] opacity-40 ${isMenuOpen ? 'absolute' : 'hidden'} z-10`}></div>
-            <div className={`flex flex-col absolute top-0 right-0 h-full w-[255px] px-12 pt-14 bg-myteam_multi_page_website-secondary-police_blue transition-transform duration-200 ease-in-out transform ${isMenuOpen? 'translate-x-0' : 'translate-x-full'} z-10 overflow-hidden`}>
+        <nav>
+            <div className={`absolute -top-40 -left-20  w-[110vw] h-[110vh] bg-[black] opacity-40 ${isMenuOpen ? 'absolute' : 'hidden'} z-10`}></div>
+            <div className={`flex flex-col absolute top-0 right-0 h-screen w-[260px] bg-myteam_multi_page_website-secondary-police_blue transition-transform duration-200 ease-in-out transform ${isMenuOpen? 'translate-x-0' : ' translate-x-96'} pt-14 pl-12 pr-6 z-30 sm:hidden overflow-hidden`}>
                 {/* <div className="bg-[black] h-5 w-5 mb-10 self-end" onClick={toggleMenu}></div> */}
                 <Image className="mb-10 self-end hover:cursor-pointer" color="currentColor" src={IconClose} alt="Icon Close" onClick={toggleMenu}></Image>
                 <Link className="mr-10 hover:text-myteam_multi_page_website-primary-light_coral mb-6" 
@@ -183,9 +166,31 @@ const Navbar: React.FC<ExtendableProp> = ({className}) => {
                 <ContactButton1></ContactButton1>
                 <Image className="absolute -right-[100px] bottom-0" src={BGPatternMobileNav} alt="Pattern Mobile Nav"></Image>
             </div>
-            {/* <Button title="contact us"></Button> */}
-            <ContactButton1 className="max-sm:hidden"></ContactButton1>
+            <div className={twMerge(`${typography.body_1} absolute flex w-[clamp(690px,80vw,1110px)] max-md:w-[clamp(327px,80vw,690px)] text-[white]  gap-x-3 justify-between items-center z-10`, className)}>
+                <div className="flex items-center">
+                    <Link href={"/myteam-multi-page-website"}>
+                        <Image className="mr-[clamp(40px,5vw,80px)]" src={Logo} alt="my team"/>
+                    </Link>
+                    <div className="max-sm:hidden">
+                        <Link className="mr-10 hover:text-myteam_multi_page_website-primary-light_coral" 
+                            href={"/myteam-multi-page-website"}>home
+                        </Link>
+                        <Link className="hover:text-myteam_multi_page_website-primary-light_coral"
+                            href={"/myteam-multi-page-website/about"}>about
+                        </Link>
+                    </div>
+                </div>
+                <div className="sm:hidden w-5 h-[17px] hover:cursor-pointer" onClick={toggleMenu}>
+                    <div className="bg-[white] h-[3px] mb-1"></div>
+                    <div className="bg-[white] h-[3px] mb-1"></div>
+                    <div className="bg-[white] h-[3px]"></div>
+                </div>
+                
+                {/* <Button title="contact us"></Button> */}
+                <ContactButton1 className="max-sm:hidden"></ContactButton1>
+            </div>
         </nav>
+        
     )
 }
 
