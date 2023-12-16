@@ -16,7 +16,7 @@ const livvic= Livvic({
 
 const typography = {
     h1_L: "font-bold text-[64px] md:text-[clamp(64px,7vw,100px)] min-[375px]:text-[clamp(40px,10vw,64px)] leading-[56px] md:leading-[clamp(56px,7vw,100px)] min-[375px]:leading-[clamp(40px,10vw,56px)]",
-    h1_S: "font-bold text-[64px] leading-[56px]",
+    h1_S: "font-bold text-[64px] leading-[56px] max-md:text-[clamp(40px,9vw,64px)]",
     h2:"font-bold text-[clamp(32px,4vw,48px)] leading-[clamp(32px,4vw,48px)]",
     h2_S: "font-bold text-[32px] leading-[48px]",
     h3: "font-bold text-[18px] leading-[28px]",
@@ -153,20 +153,20 @@ const Navbar: React.FC<ExtendableProp> = ({className}) => {
     }, [isMenuOpen])
     return(
         <nav>
-            <div className={`absolute -top-40 -left-20  w-[110vw] h-[110vh] bg-[black] opacity-40 ${isMenuOpen ? 'absolute' : 'hidden'} z-10`}></div>
-            <div className={`flex flex-col absolute top-0 right-0 h-screen w-[260px] bg-myteam_multi_page_website-secondary-police_blue transition-transform duration-200 ease-in-out transform ${isMenuOpen? 'translate-x-0' : ' translate-x-96'} pt-14 pl-12 pr-6 z-30 sm:hidden overflow-hidden`}>
+            <div className={`absolute -top-40 -left-20 w-[110vw] h-[110vh] bg-[black] opacity-40 ${isMenuOpen ? 'absolute' : 'hidden'} z-10`}></div>
+            <div className={`flex flex-col absolute top-0 right-0 h-screen w-[260px] bg-myteam_multi_page_website-secondary-police_blue transition-transform duration-200 ease-in-out transform ${isMenuOpen? 'translate-x-0' : ' translate-x-96'} pt-14 pl-12 pr-6 z-30 sm:hidden overflow-hidden text-[white] `}>
                 {/* <div className="bg-[black] h-5 w-5 mb-10 self-end" onClick={toggleMenu}></div> */}
                 <Image className="mb-10 self-end hover:cursor-pointer" color="currentColor" src={IconClose} alt="Icon Close" onClick={toggleMenu}></Image>
                 <Link className="mr-10 hover:text-myteam_multi_page_website-primary-light_coral mb-6" 
                     href={"/myteam-multi-page-website"}>home
                 </Link>
                 <Link className="hover:text-myteam_multi_page_website-primary-light_coral mb-9"
-                    href={"/myteam-multi_page_website/about"}>about
+                    href={"/myteam-multi-page-website/about"}>about
                 </Link>
                 <ContactButton1></ContactButton1>
                 <Image className="absolute -right-[100px] bottom-0" src={BGPatternMobileNav} alt="Pattern Mobile Nav"></Image>
             </div>
-            <div className={twMerge(`${typography.body_1} absolute flex w-[clamp(690px,80vw,1110px)] max-md:w-[clamp(327px,80vw,690px)] text-[white]  gap-x-3 justify-between items-center z-10`, className)}>
+            <div className={twMerge(`${typography.body_1} absolute top-[73px] max-md:top-16 max-sm:top-12 left-1/2 -translate-x-1/2 flex w-[clamp(690px,80vw,1110px)] max-md:w-[clamp(327px,80vw,690px)] text-[white]  gap-x-3 justify-between items-center z-10 `, className)}>
                 <div className="flex items-center">
                     <Link href={"/myteam-multi-page-website"}>
                         <Image className="mr-[clamp(40px,5vw,80px)]" src={Logo} alt="my team"/>
@@ -196,10 +196,10 @@ const Navbar: React.FC<ExtendableProp> = ({className}) => {
 
 const ContactSection = () => {
     return(
-        <section className="relative flex justify-between py-[76px] px-[clamp(98px,19vw,260px)] max-md:px-[98px]
+        <section className="relative flex max-sm:flex-col max-sm:items-center justify-between max-sm:text-center py-[76px] max-[375px]:py-[83px] px-[clamp(98px,19vw,260px)] max-md:px-[clamp(24px,13vw,98px)] max-[375px]:px-6
          bg-myteam_multi_page_website-primary-light_coral overflow-hidden">
             <h2 className={`${typography.h2}
-            text-myteam_multi_page_website-secondary-sacramento_state_green`}>
+            text-myteam_multi_page_website-secondary-sacramento_state_green max-sm:mb-6`}>
                 Ready to get started?
             </h2>
             <ContactButton2></ContactButton2>
@@ -208,11 +208,71 @@ const ContactSection = () => {
             
     )
 }
+
+const FooterIcons = () => {
+    return(
+        <div className="flex gap-x-4 justify-start items-center">
+            <IconFacebook></IconFacebook>
+            <IconPinterest></IconPinterest>
+            <IconTwitter></IconTwitter>
+        </div>
+    )
+}
+
+const FooterOptions = () => {
+    return(
+        <div className={`${typography.body_1} flex md:gap-x-10 max-md:justify-between`}>
+            <p className="hover:text-myteam_multi_page_website-primary-light_coral cursor-pointer">home</p>
+            <p className="hover:text-myteam_multi_page_website-primary-light_coral cursor-pointer">about</p>
+        </div>
+    )
+}
+
+const FooterInfo = () => {
+    return(
+        <p className="max-md:text-end max-[375px]:text-center opacity-60 w-[175px]">
+            987 Hillcrest Lane<br></br>
+            Irvine, CA<br></br>
+            California 92714<br></br>
+            Call Us : 949-833-7432    
+        </p>
+    )
+}
+
+const FooterCopyright = () => {
+    return(
+        <p className="opacity-60 text-end">Copyright 2020. All Rights Reserved</p>
+    )
+}
+
+const FooterSiteMap = () => {
+    return(
+        <div className="flex flex-col max-md:justify-between max-[375px]:items-center gap-y-6">
+            <Image src={Logo} className="w-[clamp(96px,12vw,160px)] h-[clamp(24px,3vw,40px)]" alt="myteam logo"></Image>
+            <FooterOptions/>
+        </div>
+    )
+}
+export const FooterExperiment = () => {
+    return(
+        <footer className="flex max-md:flex-col justify-between max-[375px]:items-center gap-x-10 gap-y-8
+        bg-myteam_multi_page_website-secondary-dark_green text-[white] px-[clamp(40px,12vw,165px)] max-md:px-10 max-[375px]:px-6 py-12 max-[375px]:py-16">
+            <div className="flex md:w-[clamp(350px,41.6%,460px)] max-[375px]:flex-col justify-between gap-x-10 max-[375px]:gap-y-6">
+                <FooterSiteMap/>
+                <FooterInfo/>    
+            </div>
+            <div className={`flex md:flex-col justify-between max-[375px]:flex-col items-end max-[375px]:items-center max-[375px]:gap-y-4 ${typography.body_2}`}>
+                <FooterIcons/>
+                <FooterCopyright/>
+            </div>
+        </footer>
+    )
+}
 const Footer = () => {
     return(
-        <footer className="flex justify-around max-md:justify-between
+        <footer className="flex max-sm:flex-col max-sm:items-center max-sm:text-center justify-around max-md:justify-between
         bg-myteam_multi_page_website-secondary-dark_green text-[white] px-[clamp(40px,7vw,165px)] py-12">
-            <div className="flex flex-col gap-y-6">
+            <div className="flex flex-col max-sm:items-center gap-y-6">
                 <Image src={Logo} className="w-[clamp(96px,12vw,160px)] h-[clamp(24px,3vw,40px)]" alt="myteam logo"></Image>
                 <div className={`${typography.body_1} flex gap-x-10`}>
                     <p className="hover:text-myteam_multi_page_website-primary-light_coral cursor-pointer">home</p>
@@ -224,8 +284,8 @@ const Footer = () => {
                     <IconTwitter></IconTwitter>
                 </div>
             </div>
-            <div className={`flex flex-col justify-between items-end  ${typography.body_2} opacity-60`}>
-                <p className="max-md:text-end">
+            <div className={`flex flex-col max-sm:items-center justify-between items-end ${typography.body_2} opacity-60`}>
+                <p className="max-md:text-end max-sm:text-center">
                     987 Hillcrest Lane<br></br>
                     Irvine, CA<br></br>
                     California 92714<br></br>

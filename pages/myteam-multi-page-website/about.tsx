@@ -1,4 +1,4 @@
-import { livvic, typography, Navbar, Footer, IconTwitter, IconLinkedIn, ContactSection } from "./reusable_component"
+import { livvic, typography, Navbar, Footer, IconTwitter, IconLinkedIn, ContactSection, FooterExperiment } from "./reusable_component"
 import { StaticImageData } from "next/image"
 import BGPatternAbout1 from "./starter-code/assets/bg-pattern-about-1-mobile-nav-1.svg"
 import BGPatternAbout2 from "./starter-code/assets/bg-pattern-about-2-contact-1.svg"
@@ -27,20 +27,19 @@ import type { ExtendableProp } from "./reusable_component"
 const HeroSection = ()  => {
     return(
         <section className="relative bg-myteam_multi_page_website-primary-midnight_green
-         px-[clamp(40px,11vw,165px)] max-md:px-10 pt-[73px] max-md:pt-[64px] pb-[120px] max-md:pb-[112px] text-[white]">
-            <Navbar className="mb-[120px]"></Navbar>
+         px-[clamp(40px,11vw,165px)] max-md:px-10 pt-[241px] max-md:pt-[clamp(160px,30vw,224px)] pb-[120px] max-md:pb-[112px] text-[white]">
             <div className="flex max-lg:flex-col max-lg:items-center max-lg:text-center gap-x-[30px]">
                 <h1 className={`${typography.h1_S} w-[350px] max-lg:mb-6`}>About</h1>
                 <div>
                     <div className="w-[50px] h-1 bg-myteam_multi_page_website-primary-light_coral mb-10 max-lg:hidden"></div>
-                    <p className={`${typography.body_1} w-[clamp(457px,50vw,730px)]`}> We help companies build dynamic teams made up of top global talent. 
+                    <p className={`${typography.body_1} w-[clamp(457px,50vw,730px)] max-md:w-[clamp(327px,60vw,457px)] max-[375px]:w-[clamp(0px,70vw,327px)]`}> We help companies build dynamic teams made up of top global talent. 
                         Using our network of passionate professionals we drive innovation and deliver incredible outcomes.
                         Talented, diverse teams shape the best products and experiences.
                         We’ll bring those teams to you.
                     </p>
                 </div>
             </div>
-            <Image className="absolute bottom-0 right-[-100px]" src={BGPatternAbout1} alt=""></Image>
+            <Image className="absolute bottom-0 right-[-100px] max-md:-bottom-[100px]" src={BGPatternAbout1} alt=""></Image>
         </section>
     )
 }
@@ -48,15 +47,15 @@ const HeroSection = ()  => {
 const ClientSection = () => {
     return(
         <section className="relative flex flex-col items-center px-[clamp(35px,10vw,165px)] max-md:px-[40px] py-[clamp(100px,12vw,140px)] text-[white] bg-myteam_multi_page_website-secondary-sacramento_state_green gap-y-16 overflow-hidden">
-            <h2 className={`${typography.h2}`}>Some of our clients</h2>
-            <div className="flex items-center gap-x-[clamp(40px,5vw,80px)]">
-                <Image className="w-[clamp(103px,15vw,165px)] h-[clamp(17px,2vw,28px)]" src={LogoTheVerge} alt=""/>
-                <Image className="w-[clamp(114px,15vw,184px)] h-[clamp(14px,2vw,23px)]" src={LogoJakartaPost} alt=""></Image>
-                <Image className="w-[clamp(112px,15vw,180px)] h-[clamp(17px,2vw,28px)]" src={LogoGuardian} alt=""></Image>
-                <Image className="w-[clamp(103px,15vw,165px)] h-[clamp(17px,2vw,28px)]" src={LogoTechradar} alt=""></Image>
-                <Image className="w-[clamp(61px,8vw,98px)] h-[clamp(28px,3vw,45px)]" src={LogoGadgetsNow} alt=""></Image>
+            <h2 className={`${typography.h2} max-[375px]:text-center`}>Some of our clients</h2>
+            <div className="flex max-md:flex-wrap justify-center max-[375px]:flex-col items-center gap-x-[clamp(40px,5vw,80px)] max-md:gap-y-10">
+                <Image className="w-[clamp(103px,15vw,165px)] h-[clamp(17px,2vw,28px)] max-[375px]:w-[147px] max-[375px]:h-6" src={LogoTheVerge} alt=""/>
+                <Image className="w-[clamp(114px,15vw,184px)] h-[clamp(14px,2vw,23px)] max-[375px]:w-[162px] max-[375px]:h-5" src={LogoJakartaPost} alt=""></Image>
+                <Image className="w-[clamp(112px,15vw,180px)] h-[clamp(17px,2vw,28px)] max-[375px]:w-[159px] max-[375px]:h-6" src={LogoGuardian} alt=""></Image>
+                <Image className="w-[clamp(103px,15vw,165px)] h-[clamp(17px,2vw,28px)] max-[375px]:w-[147px] max-[375px]:h-6" src={LogoTechradar} alt=""></Image>
+                <Image className="w-[clamp(61px,8vw,98px)] h-[clamp(28px,3vw,45px)] max-[375px]:w-[89px] max-[375px]:h-10" src={LogoGadgetsNow} alt=""></Image>
             </div>
-            <Image className="absolute top-[clamp(-100px,calc(-200px+15vw),0px)] max-md:-top-[100px] left-0" src={BGPatternAbout4} alt=""></Image>
+            <Image className="absolute top-[clamp(-100px,calc(-200px+15vw),0px)] max-md:-top-[100px] left-0 max-md:left-[clamp(-100px,calc(-160px+15vw),0px)]" src={BGPatternAbout4} alt=""></Image>
         </section>
     )
 }
@@ -171,14 +170,14 @@ const DirectorSection = () => {
     ]
     
     return(
-        <section className="relative flex flex-col justify-center items-center px-[clamp(98px,11vw,165px)] pt-[clamp(100px,11vw,140px)] pb-[clamp(128px,11vw,140px)] bg-myteam_multi_page_website-secondary-deep_jungle_green gap-y-16">
-            <h2 className={`${typography.h2} text-[white]`}>Meet the directors</h2>
-            <div className="flex justify-center flex-wrap gap-x-[clamp(11px,1.5vw,30px)] gap-y-[76px]">
+        <section className="relative flex flex-col justify-center items-center px-[clamp(98px,11vw,165px)] max-md:px-[clamp(24px,13vw,98px)] pt-[clamp(100px,11vw,140px)] pb-[clamp(128px,11vw,140px)] bg-myteam_multi_page_website-secondary-deep_jungle_green gap-y-16 overflow-hidden">
+            <h2 className={`${typography.h2} text-[white] max-sm:text-center`}>Meet the directors</h2>
+            <div className="flex justify-center flex-wrap gap-x-[clamp(11px,1.5vw,30px)] gap-y-[76px] max-sm:gap-y-[clamp(52px,13vw,76px)]">
             {directorList.map((director, index) => 
                 <Director key={`director ${index}`} {...director}></Director>
             )}
             </div>
-            <Image className="absolute top-0 left-[-100px]" src={BGPatternAbout2} alt=""></Image>
+            <Image className="absolute top-0 max-sm:top-[-100px] left-[-100px]" src={BGPatternAbout2} alt=""></Image>
             <Image className="absolute bottom-0 right-0" src={BGPatternAbout3} alt=""></Image>
             
         </section>
@@ -186,12 +185,13 @@ const DirectorSection = () => {
 }
 export default function AboutPage(){
     return(
-        <div className={`${livvic.className}`}>
+        <div className={`relative ${livvic.className}`}>
+            <Navbar className="top-16"/>
             <HeroSection/>
             <DirectorSection/>
             <ClientSection/>
             <ContactSection/>
-            <Footer/>
+            <FooterExperiment/>
         </div>
     )
 }

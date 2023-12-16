@@ -19,6 +19,7 @@ import {
   Navbar,
   Footer,
   ContactSection,
+  FooterExperiment,
 } from "./reusable_component";
 
 // const livvic= Livvic({
@@ -31,7 +32,7 @@ const Section1 = () => {
     <section
       className="relative
         bg-myteam_multi_page_website-primary-midnight_green
-        text-[white] px-[clamp(40px,11vw,165px)] max-md:px-10 pt-[250px] max-md:pt-16 pb-[250px] min-[375px]:pb-[clamp(200px,50vw,250px)]"
+        text-[white] px-[clamp(40px,11vw,165px)] max-md:px-10 pt-[clamp(224px,28vw,250px)] max-md:pt-[clamp(160px,30vw,224px)] pb-[250px] max-md:pb-[clamp(197px,34vw,250px)]"
     >
       <div className="flex max-md:flex-col max-md:text-center gap-x-[32px]">
         <h1 className={`${typography.h1_L} md:w-[635px] max-md:mb-6`}>
@@ -79,16 +80,16 @@ const Section2 = () => {
     description,
   }) => {
     return (
-      <div className="flex gap-x-6 items-center">
+      <div className="flex max-sm:flex-col gap-x-6 items-center max-sm:text-center">
         <Image
-          className="grow-0 w-[72px] h-[72px]"
+          className="grow-0 w-[72px] h-[72px] max-sm:mb-4"
           src={icon}
           alt={icon_name}
         ></Image>
         <div>
           <h2
             className={`${typography.body_1} 
-                    text-myteam_multi_page_website-primary-light_coral mb-4`}
+                    text-myteam_multi_page_website-primary-light_coral mb-4 max-sm:mb-2`}
           >
             {title}
           </h2>
@@ -124,7 +125,7 @@ const Section2 = () => {
   return (
     <section
       className="relative flex max-lg:flex-col
-         justify-between px-[clamp(97px,12vw,165px)] py-[clamp(100px,11vw,140px)]
+         justify-between px-[clamp(97px,12vw,165px)] max-md:px-[clamp(24px,14vw,97px)] max-[375px]:px-6 py-[clamp(100px,11vw,140px)] max-md:py-[clamp(64px,13vw,100px)]
         bg-myteam_multi_page_website-secondary-sacramento_state_green"
     >
       <div>
@@ -132,11 +133,11 @@ const Section2 = () => {
           className="w-[50px] h-1 bg-myteam_multi_page_website-primary-light_coral
                  mb-[clamp(32px,3.5vw,56px)]"
         ></div>
-        <h1 className={`${typography.h2} w-[445px] text-[white]`}>
-          Build & manage distributed teams like no one else.
+        <h1 className={`${typography.h2} max-w-[445px] max-md:w-[clamp(240px,60vw,445px)]  text-[white]`}>
+          Build  & manage distributed teams like no one else.
         </h1>
       </div>
-      <div className="flex flex-col gap-y-8 mt-12 w-[540px] max-md:w-[573px]">
+      <div className="flex flex-col gap-y-8 mt-12 max-w-[540px]">
         {featureList.map((feature, index) => (
           <Feature key={`feature ${index}`} {...feature}></Feature>
         ))}
@@ -171,7 +172,7 @@ const Section3 = () => {
           alt="Icon Quotes"
         ></Image>
         <p
-          className={`${typography.body_2} w-[350px] max-lg:w-[573px] mb-6 z-10`}
+          className={`${typography.body_2} w-[350px] max-lg:w-[573px] max-md:w-[clamp(327px,80vw,573px)] mb-6 z-10`}
         >
           {testimony}
         </p>
@@ -214,12 +215,12 @@ const Section3 = () => {
   ];
   return (
     <section
-      className="relative flex flex-col px-[clamp(97px,12vw,165px)] 
-            py-[clamp(100px,11vw,140px)] gap-y-14 max-lg:gap-y-12
+      className="relative flex flex-col px-[clamp(97px,12vw,165px)] max-md:px-[clamp(24px,14vw,97px)] max-[375px]:px-6
+            py-[clamp(100px,11vw,140px)] max-[375px]:py-[140px] gap-y-14 max-lg:gap-y-12
           bg-myteam_multi_page_website-secondary-deep_jungle_green
             items-center text-center text-[white]"
     >
-      <h1 className={`${typography.h2} w-[clamp(480px,75vw,932px)] `}>
+      <h1 className={`${typography.h2} w-[clamp(480px,75vw,932px)] max-md:w-[clamp(327px,85vw,480px)]`}>
         Delivering real results for top companies. Some of our
         <span className=" text-myteam_multi_page_website-secondary-rapture_blue">
           {" "}
@@ -247,12 +248,12 @@ const Section3 = () => {
 export default function HomePage() {
   return (
     <div className={`${livvic.className} relative`}>
-      <Navbar className="top-[73px] left-1/2 -translate-x-1/2"></Navbar>
+      <Navbar></Navbar>
       <Section1 />
       <Section2 />
       <Section3 />
       <ContactSection />
-      <Footer />
+      <FooterExperiment />
     </div>
   );
 }
