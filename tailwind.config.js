@@ -72,9 +72,26 @@ module.exports = {
           sacramento_state_green: "#012F34",
           dark_green: "#002529"
         }
+      },skilled_elearning_landing_page:
+      {
+        dark_blue_gray: "#666CA3",
+        yankees_blue: "#13183F",
+        roman_silver: "#83869A",
+        sasquatch_socks: "#F74780",
+        carnation_pink: "#FFA7C3",
+        frostbite: "#F02AA6",
+        outrageous_orange: "#FF6F48",
+        ultramarine_blue: "#4851FF",
+
+
       }
     },
-    extend: {},
+    extend: {
+      backgroundImage: theme => ({
+        'gradient-orange-skilled_elearning_landing_page': `linear-gradient(to top, ${theme('colors.skilled_elearning_landing_page.frostbite')}, ${theme('colors.skilled_elearning_landing_page.outrageous_orange')})`,
+        'gradient-blue-skilled_elearning_landing_page': `linear-gradient(to top, ${theme('colors.skilled_elearning_landing_page.ultramarine_blue')}, ${theme('colors.skilled_elearning_landing_page.frostbite')})`,
+      })
+    },
   },
   plugins: [],
 }
