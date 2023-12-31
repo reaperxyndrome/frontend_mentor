@@ -23,6 +23,7 @@ export default function Home() {
       <Link href='/results_summary_component'><h2>Results Summary Component</h2></Link>
       <Link href='/single_page_design_portfolio'><h2>Single Page Design Portfolio</h2></Link>
       <Link href='/myteam-multi-page-website'><h2>Myteam Multi-page Website</h2></Link>
+      <Link href='/skilled-elearning-landing-page'><h2>Skilled E-Learning Landing Page</h2></Link>
       
     </>
   )
