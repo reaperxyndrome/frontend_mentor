@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  optimizeFonts: false,
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.(woff(2)?|eot|ttf|otf|)$/,
